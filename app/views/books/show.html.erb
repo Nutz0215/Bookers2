@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+    <%= render '/users/profile',user:@user %>
+
+    <%= render 'create', book:@book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+    
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Title</th>
+          <th scope="col">Opinion</th>
+        </tr>
+      </thead>
+  
+     <tbody>
+    <h1>Book detail </h1>
+        <tr>
+          <td><%= link_to image_tag(@show_book.user.get_profile_image(80,80)),user_path(@show_book.user_id) %>
+          <%= link_to "#{@show_book.user.name}",user_path(@show_book.user_id) %></td>
+          <td><%= link_to "#{@show_book.title}",book_path(@show_book.id) %></td>
+          <td><%= @show_book.body %></td>
+        <td><% if @show_book.user == current_user %>
+      <%= link_to 'Edit',edit_book_path(@show_book.id) %>
+        <% end %></td>
+    
+      <td><% if @show_book.user == current_user %>
+      <%= link_to 'Destroy',book_path(@show_book),method: :delete,"data-confirm" => "Are you sure?" %>
+        <% end %></td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>
