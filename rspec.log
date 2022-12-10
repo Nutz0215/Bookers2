@@ -1,4 +1,14 @@
 
+BookCommentモデルのテスト
+  バリデーションのテスト
+    commentカラム
+[32m      空欄でないこと[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
 Bookモデルのテスト
   バリデーションのテスト
     titleカラム
@@ -8,6 +18,19 @@ Bookモデルのテスト
 [32m      200文字以下であること: 200文字は〇[0m
 [32m      200文字以下であること: 201文字は×[0m
   アソシエーションのテスト
+    Userモデルとの関係
+[32m      N:1となっている[0m
+    BookCommentモデルとの関係
+[32m      1:Nとなっている[0m
+    Favoriteモデルとの関係
+[32m      1:Nとなっている[0m
+
+Favoriteモデルのテスト
+  バリデーションのテスト
+[32m    ユーザーは一つの投稿に一つしかいいねできない[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
     Userモデルとの関係
 [32m      N:1となっている[0m
 
@@ -26,31 +49,34 @@ Userモデルのテスト
   アソシエーションのテスト
     Bookモデルとの関係
 [32m      1:Nとなっている[0m
+    BookCommentモデルとの関係
+[32m      1:Nとなっている[0m
+    Favoriteモデルとの関係
+[32m      1:Nとなっている[0m
 
 [STEP1] ユーザログイン前のテスト
   トップ画面のテスト
     表示内容の確認
 [32m      URLが正しい[0m
-[32m      Log inリンクが表示される: 青色のボタンの表示が「Log in」である[0m
+[32m      Log inリンクが表示される: 左上から5番目のリンクが「Log in」である[0m
 [32m      Log inリンクの内容が正しい[0m
-[32m      Sign upリンクが表示される: 緑色のボタンの表示が「Sign up」である[0m
-[32m      Sign upリンクの内容が正しい[0m
+[32m      Sign Upリンクが表示される: 左上から6番目のリンクが「Sign Up」である[0m
+[32m      Sign Upリンクの内容が正しい[0m
   アバウト画面のテスト
     表示内容の確認
 [32m      URLが正しい[0m
   ヘッダーのテスト: ログインしていない場合
     表示内容の確認
-[32m      Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である[0m
-[32m      Homeリンクが表示される: 左上から2番目のリンクが「Home」である[0m
-[32m      Aboutリンクが表示される: 左上から3番目のリンクが「About」である[0m
-[32m      Sign upリンクが表示される: 左上から4番目のリンクが「Sign up」である[0m
-[32m      Log inリンクが表示される: 左上から5番目のリンクが「Log in」である[0m
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Aboutリンクが表示される: 左上から2番目のリンクが「About」である[0m
+[32m      sign upリンクが表示される: 左上から3番目のリンクが「sign up」である[0m
+[31m      loginリンクが表示される: 左上から4番目のリンクが「login」である (FAILED - 1)[0m
     リンクの内容を確認
-[32m      Bookersを押すと、トップ画面に遷移する[0m
 [32m      Homeを押すと、トップ画面に遷移する[0m
 [32m      Aboutを押すと、アバウト画面に遷移する[0m
-[32m      Sign upを押すと、新規登録画面に遷移する[0m
-[32m      Log inを押すと、ログイン画面に遷移する[0m
+[31m      sign upを押すと、新規登録画面に遷移する (FAILED - 2)[0m
+[31m      loginを押すと、ログイン画面に遷移する (FAILED - 3)[0m
   ユーザ新規登録のテスト
     表示内容の確認
 [32m      URLが正しい[0m
@@ -69,7 +95,7 @@ Userモデルのテスト
 [32m      「Log in」と表示される[0m
 [32m      nameフォームが表示される[0m
 [32m      passwordフォームが表示される[0m
-[32m      Log inボタンが表示される[0m
+[32m      Sign upボタンが表示される[0m
 [32m      emailフォームは表示されない[0m
     ログイン成功のテスト
 [32m      ログイン後のリダイレクト先が、ログインしたユーザの詳細画面になっている[0m
@@ -77,11 +103,11 @@ Userモデルのテスト
 [32m      ログインに失敗し、ログイン画面にリダイレクトされる[0m
   ヘッダーのテスト: ログインしている場合
     ヘッダーの表示を確認
-[32m      Bookersリンクが表示される: 左上から1番目のリンクが「Bookers」である[0m
-[32m      Homeリンクが表示される: 左上から2番目のリンクが「Home」である[0m
-[32m      Usersリンクが表示される: 左上から3番目のリンクが「Users」である[0m
-[32m      Booksリンクが表示される: 左上から4番目のリンクが「Books」である[0m
-[32m      Log outリンクが表示される: 左上から5番目のリンクが「Log out」である[0m
+[32m      タイトルが表示される[0m
+[32m      Homeリンクが表示される: 左上から1番目のリンクが「Home」である[0m
+[32m      Usersリンクが表示される: 左上から2番目のリンクが「Users」である[0m
+[32m      Booksリンクが表示される: 左上から3番目のリンクが「Books」である[0m
+[31m      log outリンクが表示される: 左上から4番目のリンクが「logout」である (FAILED - 4)[0m
   ユーザログアウトのテスト
     ログアウト機能のテスト
 [32m      正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する[0m
@@ -105,8 +131,8 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
     投稿成功のテスト
 [32m      自分の新しい投稿が正しく保存される[0m
@@ -117,7 +143,7 @@ Userモデルのテスト
 [32m      「Book detail」と表示される[0m
 [32m      ユーザ画像・名前のリンク先が正しい[0m
 [32m      投稿のtitleが表示される[0m
-[32m      投稿のbodyが表示される[0m
+[32m      投稿のopinionが表示される[0m
 [32m      投稿の編集リンクが表示される[0m
 [32m      投稿の削除リンクが表示される[0m
     サイドバーの確認
@@ -126,15 +152,14 @@ Userモデルのテスト
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
     投稿成功のテスト
 [32m      自分の新しい投稿が正しく保存される[0m
     編集リンクのテスト
 [32m      編集画面に遷移する[0m
     削除リンクのテスト
-[32m      application.html.erbにjavascript_pack_tagを含んでいる[0m
 [32m      正しく削除される[0m
 [32m      リダイレクト先が、投稿一覧画面になっている[0m
   自分の投稿編集画面のテスト
@@ -142,7 +167,7 @@ Userモデルのテスト
 [32m      URLが正しい[0m
 [32m      「Editing Book」と表示される[0m
 [32m      title編集フォームが表示される[0m
-[32m      body編集フォームが表示される[0m
+[32m      opinion編集フォームが表示される[0m
 [32m      Update Bookボタンが表示される[0m
 [32m      Showリンクが表示される[0m
 [32m      Backリンクが表示される[0m
@@ -157,48 +182,48 @@ Userモデルのテスト
 [32m      自分と他人の名前がそれぞれ表示される[0m
 [32m      自分と他人のshowリンクがそれぞれ表示される[0m
     サイドバーの確認
-[31m      自分の名前と紹介文が表示される (FAILED - 1)[0m
-[31m      自分のユーザ編集画面へのリンクが存在する (FAILED - 2)[0m
+[32m      自分の名前と紹介文が表示される[0m
+[32m      自分のユーザ編集画面へのリンクが存在する[0m
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
   自分のユーザ詳細画面のテスト
     表示の確認
 [32m      URLが正しい[0m
 [32m      投稿一覧のユーザ画像のリンク先が正しい[0m
-[31m      投稿一覧に自分の投稿のtitleが表示され、リンクが正しい (FAILED - 3)[0m
-[31m      投稿一覧に自分の投稿のbodyが表示される (FAILED - 4)[0m
-[31m      他人の投稿は表示されない (FAILED - 5)[0m
+[32m      投稿一覧に自分の投稿のtitleが表示され、リンクが正しい[0m
+[32m      投稿一覧に自分の投稿のopinionが表示される[0m
+[32m      他人の投稿は表示されない[0m
     サイドバーの確認
-[31m      自分の名前と紹介文が表示される (FAILED - 6)[0m
-[31m      自分のユーザ編集画面へのリンクが存在する (FAILED - 7)[0m
+[32m      自分の名前と紹介文が表示される[0m
+[32m      自分のユーザ編集画面へのリンクが存在する[0m
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
-[32m      bodyフォームが表示される[0m
-[32m      bodyフォームに値が入っていない[0m
+[32m      opinionフォームが表示される[0m
+[32m      opinionフォームに値が入っていない[0m
 [32m      Create Bookボタンが表示される[0m
   自分のユーザ情報編集画面のテスト
     表示の確認
-[31m      URLが正しい (FAILED - 8)[0m
-[31m      名前編集フォームに自分の名前が表示される (FAILED - 9)[0m
-[31m      画像編集フォームが表示される (FAILED - 10)[0m
-[31m      自己紹介編集フォームに自分の自己紹介文が表示される (FAILED - 11)[0m
-[31m      Update Userボタンが表示される (FAILED - 12)[0m
+[32m      URLが正しい[0m
+[32m      名前編集フォームに自分の名前が表示される[0m
+[32m      画像編集フォームが表示される[0m
+[32m      自己紹介編集フォームに自分の自己紹介文が表示される[0m
+[32m      Update Userボタンが表示される[0m
     更新成功のテスト
-[31m      nameが正しく更新される (FAILED - 13)[0m
-[31m      introductionが正しく更新される (FAILED - 14)[0m
-[31m      リダイレクト先が、自分のユーザ詳細画面になっている (FAILED - 15)[0m
+[32m      nameが正しく更新される[0m
+[32m      introductionが正しく更新される[0m
+[32m      リダイレクト先が、自分のユーザ詳細画面になっている[0m
 
 [STEP3] 仕上げのテスト
   サクセスメッセージのテスト
 [32m    ユーザ新規登録成功時[0m
 [32m    ユーザログイン成功時[0m
 [32m    ユーザログアウト成功時[0m
-[31m    ユーザのプロフィール情報更新成功時 (FAILED - 16)[0m
+[32m    ユーザのプロフィール情報更新成功時[0m
 [32m    投稿データの新規投稿成功時: 投稿一覧画面から行います。[0m
 [32m    投稿データの更新成功時[0m
   処理失敗時のテスト
@@ -207,9 +232,9 @@ Userモデルのテスト
 [32m      新規登録画面を表示しており、フォームの内容が正しい[0m
 [32m      バリデーションエラーが表示される[0m
     ユーザのプロフィール情報編集失敗: nameを1文字にする
-[31m      更新されない (FAILED - 17)[0m
-[31m      ユーザ編集画面を表示しており、フォームの内容が正しい (FAILED - 18)[0m
-[31m      バリデーションエラーが表示される (FAILED - 19)[0m
+[32m      更新されない[0m
+[32m      ユーザ編集画面を表示しており、フォームの内容が正しい[0m
+[32m      バリデーションエラーが表示される[0m
     投稿データの新規投稿失敗: 投稿一覧画面から行い、titleを空にする
 [32m      投稿が保存されない[0m
 [32m      投稿一覧画面を表示している[0m
@@ -270,212 +295,132 @@ Userモデルのテスト
     ヘッダー: ログインしていない場合
 [32m      Homeリンクのアイコンが表示される[0m
 [32m      Aboutリンクのアイコンが表示される[0m
-[32m      Sign upリンクのアイコンが表示される[0m
-[32m      Log inリンクのアイコンが表示される[0m
+[32m      sign upリンクのアイコンが表示される[0m
+[32m      loginリンクのアイコンが表示される[0m
     ヘッダー: ログインしている場合
 [32m      Homeリンクのアイコンが表示される[0m
 [32m      Usersリンクのアイコンが表示される[0m
 [32m      Booksリンクのアイコンが表示される[0m
-[32m      Log outリンクのアイコンが表示される[0m
+[32m      log outリンクのアイコンが表示される[0m
     サイドバー
 [32m      ユーザ一覧画面でレンチアイコンが表示される[0m
 [32m      ユーザ詳細画面でレンチアイコンが表示される[0m
 [32m      投稿一覧画面でレンチアイコンが表示される[0m
 [32m      投稿詳細画面でレンチアイコンが表示される[0m
 
+[STEP4] いいねとコメントのテスト
+  投稿一覧画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[32m      リダイレクト先が投稿一覧画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+    いいね削除機能のテスト
+[32m      自分のいいねが正しく削除される[0m
+[32m      リダイレクト先が投稿一覧画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+  自分の投稿詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+[32m      コメント一覧でコメント投稿者の画像が表示される: fallbackの画像がサイドバーの1つ＋Book detail直下の1つ＋コメント一覧(2人)の2つの計4つ存在する[0m
+[32m      コメント一覧でコメント投稿者の名前が表示される[0m
+[32m      コメント一覧でコメントの内容が表示される[0m
+[32m      自分が投稿したコメントの削除ボタンが表示される[0m
+[32m      他人が投稿したコメントの削除ボタンは表示されない[0m
+[32m      コメント投稿フォームが表示される[0m
+[32m      送信ボタンが表示される[0m
+    いいね機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[32m      リダイレクト先が、いいねをした投稿詳細画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+    コメント追加機能のテスト
+[32m      自分のコメントが正しく保存される[0m
+[32m      リダイレクト先が、コメントをした投稿詳細画面になっている[0m
+[32m      リダイレクト先でコメント数が正しく更新されている[0m
+[32m      リダイレクト先で新しいコメントが表示されている[0m
+    コメント削除機能のテスト
+[32m      自分のコメントが正しく削除される[0m
+[32m      リダイレクト先が、コメントをしていた投稿詳細画面になっている[0m
+[32m      リダイレクト先でコメント数が正しく更新されている[0m
+[32m      リダイレクト先で削除したコメントは表示されない[0m
+  自分のユーザ詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[32m      リダイレクト先が自分のユーザ詳細画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+
 Failures:
 
-  1) [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト サイドバーの確認 自分の名前と紹介文が表示される
-     [31mFailure/Error: expect(page).to have_content user.introduction[0m
-     [31m  expected to find text "fmginlsbfu7rw67ut1t0" in "Bookers Home Users Books Log out\nUser info\nname o2whdkl2ga introduction m49qagvxn57kpp3iv5ky\nNew book\nTitle\nOpinion\nUsers\nimage name Detail o2whdkl2ga Show uqywuvxx66 Show"[0m
-     [36m# ./spec/system/02_after_login_spec.rb:283:in `block (4 levels) in <main>'[0m
-
-  2) [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクが存在する
-     [31mFailure/Error: expect(page).to have_link '', href: edit_user_path(user)[0m
-     [31m  expected to find link "" with href "/users/2/edit" but there were no matches[0m
-     [36m# ./spec/system/02_after_login_spec.rb:286:in `block (4 levels) in <main>'[0m
-
-  3) [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 投稿一覧に自分の投稿のtitleが表示され、リンクが正しい
-     [31mFailure/Error: expect(page).to have_link book.title, href: book_path(book)[0m
-     [31m  expected to find link "7j9b2" with href "/books/1" but there were no matches[0m
-     [36m# ./spec/system/02_after_login_spec.rb:322:in `block (4 levels) in <main>'[0m
-
-  4) [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 投稿一覧に自分の投稿のbodyが表示される
-     [31mFailure/Error: expect(page).to have_content book.body[0m
-     [31m  expected to find text "88z61pzmbjyyv890inyr" in "Bookers Home Users Books Log out\nUser info\nname ymc02rxbxd introduction 8sdyh62wh4ekzco3n8a2\nNew book\nTitle\nOpinion\nTitle Opinion\nBooks\n39i0g 2f5fbkizff7wijo4p4km"[0m
-     [36m# ./spec/system/02_after_login_spec.rb:325:in `block (4 levels) in <main>'[0m
-
-  5) [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 他人の投稿は表示されない
-     [31mFailure/Error: expect(page).not_to have_link '', href: user_path(other_user)[0m
-     [31m  expected not to find visible link "" with href "/users/1", found 1 match: ""[0m
-     [36m# ./spec/system/02_after_login_spec.rb:328:in `block (4 levels) in <main>'[0m
-
-  6) [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト サイドバーの確認 自分の名前と紹介文が表示される
-     [31mFailure/Error: expect(page).to have_content user.name[0m
-     [31m  expected to find text "d0tckzw0us" in "Bookers Home Users Books Log out\nUser info\nname jwb66eqean introduction tkyh6shzuos811cpdaav\nNew book\nTitle\nOpinion\nTitle Opinion\nBooks\n1m96b u4q40axwal788z36aiq1"[0m
-     [36m# ./spec/system/02_after_login_spec.rb:336:in `block (4 levels) in <main>'[0m
-
-  7) [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクが存在する
-     [31mFailure/Error: expect(page).to have_link '', href: edit_user_path(user)[0m
-     [31m  expected to find link "" with href "/users/2/edit" but there were no matches[0m
-     [36m# ./spec/system/02_after_login_spec.rb:340:in `block (4 levels) in <main>'[0m
-
-  8) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 URLが正しい
-     [31mFailure/Error: expect(current_path).to eq '/users/' + user.id.to_s + '/edit'[0m
+  1) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 表示内容の確認 loginリンクが表示される: 左上から4番目のリンクが「login」である
+     [31mFailure/Error: expect(login_link).to match(/login/i)[0m
      [31m[0m
-     [31m  expected: "/users/2/edit"[0m
-     [31m       got: "/users/2"[0m
+     [31m  expected "\n        Log in\n" to match /login/i[0m
+     [31m  Diff:[0m[0m
+     [31m  [0m[34m@@ -1,2 +1,3 @@[0m
+     [31m  [0m[31m-/login/i[0m
+     [31m  [0m[32m+[0m
+     [31m  [0m[32m+        Log in[0m
+     [31m  [0m[0m
+     [36m# ./spec/system/01_before_login_spec.rb:67:in `block (4 levels) in <main>'[0m
+
+  2) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する
+     [31mFailure/Error: click_link signup_link[0m
      [31m[0m
-     [31m  (compared using ==)[0m
-     [36m# ./spec/system/02_after_login_spec.rb:370:in `block (4 levels) in <main>'[0m
+     [31mCapybara::Ambiguous:[0m
+     [31m  Ambiguous match, found 2 elements matching visible link "Sign up"[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:308:in `block in synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:42:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `click_link'[0m
+     [36m# ./spec/system/01_before_login_spec.rb:90:in `block (4 levels) in <main>'[0m
 
-  9) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 名前編集フォームに自分の名前が表示される
-     [31mFailure/Error: expect(page).to have_field 'user[name]', with: user.name[0m
-     [31m  expected to find field "user[name]" that is not disabled but there were no matches[0m
-     [36m# ./spec/system/02_after_login_spec.rb:373:in `block (4 levels) in <main>'[0m
+  3) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 loginを押すと、ログイン画面に遷移する
+     [31mFailure/Error: click_link login_link[0m
+     [31m[0m
+     [31mCapybara::Ambiguous:[0m
+     [31m  Ambiguous match, found 2 elements matching visible link "Log in"[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:308:in `block in synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:42:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `click_link'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `click_link'[0m
+     [36m# ./spec/system/01_before_login_spec.rb:96:in `block (4 levels) in <main>'[0m
 
-  10) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 画像編集フォームが表示される
-      [31mFailure/Error: expect(page).to have_field 'user[profile_image]'[0m
-      [31m  expected to find field "user[profile_image]" that is not disabled but there were no matches[0m
-      [36m# ./spec/system/02_after_login_spec.rb:376:in `block (4 levels) in <main>'[0m
+  4) [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしている場合 ヘッダーの表示を確認 log outリンクが表示される: 左上から4番目のリンクが「logout」である
+     [31mFailure/Error: expect(logout_link).to match(/logout/i)[0m
+     [31m[0m
+     [31m  expected "\n         Log out\n" to match /logout/i[0m
+     [31m  Diff:[0m[0m
+     [31m  [0m[34m@@ -1,2 +1,3 @@[0m
+     [31m  [0m[31m-/logout/i[0m
+     [31m  [0m[32m+[0m
+     [31m  [0m[32m+         Log out[0m
+     [31m  [0m[0m
+     [36m# ./spec/system/01_before_login_spec.rb:230:in `block (4 levels) in <main>'[0m
 
-  11) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 自己紹介編集フォームに自分の自己紹介文が表示される
-      [31mFailure/Error: expect(page).to have_field 'user[introduction]', with: user.introduction[0m
-      [31m  expected to find field "user[introduction]" that is not disabled but there were no matches[0m
-      [36m# ./spec/system/02_after_login_spec.rb:379:in `block (4 levels) in <main>'[0m
-
-  12) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 Update Userボタンが表示される
-      [31mFailure/Error: expect(page).to have_button 'Update User'[0m
-      [31m  expected to find button "Update User" that is not disabled but there were no matches[0m
-      [36m# ./spec/system/02_after_login_spec.rb:382:in `block (4 levels) in <main>'[0m
-
-  13) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト nameが正しく更新される
-      [31mFailure/Error: fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)[0m
-      [31m[0m
-      [31mCapybara::ElementNotFound:[0m
-      [31m  Unable to find field "user[name]" that is not disabled[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:91:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `fill_in'[0m
-      [36m# ./spec/system/02_after_login_spec.rb:390:in `block (4 levels) in <main>'[0m
-
-  14) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト introductionが正しく更新される
-      [31mFailure/Error: fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)[0m
-      [31m[0m
-      [31mCapybara::ElementNotFound:[0m
-      [31m  Unable to find field "user[name]" that is not disabled[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:91:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `fill_in'[0m
-      [36m# ./spec/system/02_after_login_spec.rb:390:in `block (4 levels) in <main>'[0m
-
-  15) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト リダイレクト先が、自分のユーザ詳細画面になっている
-      [31mFailure/Error: fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)[0m
-      [31m[0m
-      [31mCapybara::ElementNotFound:[0m
-      [31m  Unable to find field "user[name]" that is not disabled[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:91:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `fill_in'[0m
-      [36m# ./spec/system/02_after_login_spec.rb:390:in `block (4 levels) in <main>'[0m
-
-  16) [STEP3] 仕上げのテスト サクセスメッセージのテスト ユーザのプロフィール情報更新成功時
-      [31mFailure/Error: click_button 'Update User'[0m
-      [31m[0m
-      [31mCapybara::ElementNotFound:[0m
-      [31m  Unable to find button "Update User" that is not disabled[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:58:in `click_button'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `click_button'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `click_button'[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:44:in `block (3 levels) in <main>'[0m
-
-  17) [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする 更新されない
-      [31mFailure/Error: fill_in 'user[name]', with: @name[0m
-      [31m[0m
-      [31mCapybara::ElementNotFound:[0m
-      [31m  Unable to find field "user[name]" that is not disabled[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:91:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `fill_in'[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:105:in `block (4 levels) in <main>'[0m
-
-  18) [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする ユーザ編集画面を表示しており、フォームの内容が正しい
-      [31mFailure/Error: fill_in 'user[name]', with: @name[0m
-      [31m[0m
-      [31mCapybara::ElementNotFound:[0m
-      [31m  Unable to find field "user[name]" that is not disabled[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:91:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `fill_in'[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:105:in `block (4 levels) in <main>'[0m
-
-  19) [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする バリデーションエラーが表示される
-      [31mFailure/Error: fill_in 'user[name]', with: @name[0m
-      [31m[0m
-      [31mCapybara::ElementNotFound:[0m
-      [31m  Unable to find field "user[name]" that is not disabled[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:310:in `block in synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/base.rb:84:in `synchronize'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:299:in `synced_resolve'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/finders.rb:60:in `find'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/node/actions.rb:91:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/session.rb:773:in `fill_in'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `call'[0m
-      [36m# /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/capybara-3.38.0/lib/capybara/dsl.rb:52:in `fill_in'[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:105:in `block (4 levels) in <main>'[0m
-
-Finished in 35.22 seconds (files took 1.43 seconds to load)
-[31m199 examples, 19 failures[0m
+Finished in 39.92 seconds (files took 1.17 seconds to load)
+[31m243 examples, 4 failures[0m
 
 Failed examples:
 
-[31mrspec ./spec/system/02_after_login_spec.rb:281[0m [36m# [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト サイドバーの確認 自分の名前と紹介文が表示される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:285[0m [36m# [STEP2] ユーザログイン後のテスト ユーザ一覧画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクが存在する[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:321[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 投稿一覧に自分の投稿のtitleが表示され、リンクが正しい[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:324[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 投稿一覧に自分の投稿のbodyが表示される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:327[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト 表示の確認 他人の投稿は表示されない[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:335[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト サイドバーの確認 自分の名前と紹介文が表示される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:339[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ詳細画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクが存在する[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:369[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 URLが正しい[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:372[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 名前編集フォームに自分の名前が表示される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:375[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 画像編集フォームが表示される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:378[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 自己紹介編集フォームに自分の自己紹介文が表示される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:381[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 表示の確認 Update Userボタンが表示される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:397[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト nameが正しく更新される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:400[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト introductionが正しく更新される[0m
-[31mrspec ./spec/system/02_after_login_spec.rb:403[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト リダイレクト先が、自分のユーザ詳細画面になっている[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:38[0m [36m# [STEP3] 仕上げのテスト サクセスメッセージのテスト ユーザのプロフィール情報更新成功時[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:109[0m [36m# [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする 更新されない[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:112[0m [36m# [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする ユーザ編集画面を表示しており、フォームの内容が正しい[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:115[0m [36m# [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする バリデーションエラーが表示される[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:65[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 表示内容の確認 loginリンクが表示される: 左上から4番目のリンクが「login」である[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:87[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 sign upを押すと、新規登録画面に遷移する[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:93[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしていない場合 リンクの内容を確認 loginを押すと、ログイン画面に遷移する[0m
+[31mrspec ./spec/system/01_before_login_spec.rb:228[0m [36m# [STEP1] ユーザログイン前のテスト ヘッダーのテスト: ログインしている場合 ヘッダーの表示を確認 log outリンクが表示される: 左上から4番目のリンクが「logout」である[0m
 
